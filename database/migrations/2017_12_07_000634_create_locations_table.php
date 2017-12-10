@@ -20,7 +20,7 @@ class CreateLocationsTable extends Migration
             $table->double('lat', 9, 6);
             $table->double('lon', 9, 6);
             $table->timestampTz('added_on');
-            $table->boolean('show_on_map');
+            $table->boolean('show_on_map') -> default(true);
             $table->timestampsTz();
         });
     }

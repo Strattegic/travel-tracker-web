@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Location;
+use App\Rules\LocationRule;
 
 class LocationsController extends Controller
 {
@@ -35,7 +36,19 @@ class LocationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'lat' => ['required', new LocationRule],
+            'lon' => ['required', new LocationRule]
+        ]);
+
+        $location = new Location();
+        $location -> lat = $request -> get('lat');
+        $location -> lon = $request -> get('lon');
+        $location -> user_id = 1;
+        $location -> added_on = new \DateTime();
+        $location -> save();
+
+        return $location;
     }
 
     /**
