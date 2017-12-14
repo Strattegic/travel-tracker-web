@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
       $user -> name = "Stratti";
       $user -> email = "m.strathausen@gmail.com";
       $user -> password = Hash::make('test');
+      $user -> share_id = uniqid();
       $user -> save();
     }
 }

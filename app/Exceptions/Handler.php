@@ -49,7 +49,9 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // Custom rule to always return JSON responses
-        return response()->json($exception, 500);
-        //return parent::render($request, $exception);
+
+        // TODO: edit custom rule to only return JSON if the request was meant for the API 
+        // return response()->json($exception, 500);
+        return parent::render($request, $exception);
     }
 }

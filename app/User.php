@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+    * All locations that belong to the specified user (via user_id)
+    **/
+    public function locations(){
+        return $this -> hasMany('App\Location');
+    }
 }
