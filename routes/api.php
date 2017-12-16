@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('locations', 'LocationsController');
+Route::middleware('auth:api')->resource('locations', 'LocationsController');
