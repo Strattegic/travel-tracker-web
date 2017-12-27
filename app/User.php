@@ -34,4 +34,9 @@ class User extends Authenticatable
     public function locations(){
         return $this -> hasMany('App\Location');
     }
+
+    // LocationSharings
+    public function locationSharing(){
+        return $this -> hasMany('App\LocationSharing');
+    }
 }
