@@ -19,13 +19,19 @@ class MapController extends Controller
   	// So the share link is user dependant and not location dependant.
 
 
-    $user = User::has('locationSharing')->get();
-    dd($user);
+    $user = User::whereHas('locationSharing', function($query) use ($id){
+      $query -> where('share_id', $id);
+    })
+    ->with('locations')
+    ->first();
 
-    $locations = [];
-    foreach( $user -> locations as $location )
+    if( !empty( $user ) )
     {
-      $locations[] = ["lat" => intval($location->lat), "lng" => intval($location->lon)];
+      $locations = [];
+      foreach( $user -> locations as $location )
+      {
+        $locations[] = ["lat" => intval($location->lat), "lng" => intval($location->lon)];
+      }
     }
 
   	return view('map') -> with( ['user' => $user, 'locations' => $locations ] );
