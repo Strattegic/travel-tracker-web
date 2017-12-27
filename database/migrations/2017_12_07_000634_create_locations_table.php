@@ -19,9 +19,9 @@ class CreateLocationsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->double('lat', 9, 6);
             $table->double('lon', 9, 6);
-            $table->timestampTz('added_on');
+            $table->timestamp('added_on');
             $table->boolean('show_on_map') -> default(true);
-            $table->timestampsTz();
+            $table->timestamps();
         });
     }
 

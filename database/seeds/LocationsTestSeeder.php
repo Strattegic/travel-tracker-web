@@ -11,9 +11,16 @@ class LocationsTestSeeder extends Seeder
      */
     public function run()
     {
-      App\Location::where('show_on_map', true) -> delete();
-        $locations = factory(App\Location::class, 15)->create([
-          'user_id' => App\User::first() -> id
-        ]);
+
+        App\User::where('id', '<>', 1) -> delete();
+        App\Location::where('user_id', '<>', 1) -> delete();
+
+        $users = factory(App\User::class, 10)->create();
+        foreach( $users as $user )
+        {
+            $locations = factory(App\Location::class, 10)->create([
+              'user_id' => $user -> id
+            ]);
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Location;
 use App\Rules\LocationRule;
+use Illuminate\Support\Facades\Auth;
 
 class LocationsController extends Controller
 {
@@ -15,7 +16,7 @@ class LocationsController extends Controller
      */
     public function index()
     {
-        return Location::get();
+        return Location::where('user_id', Auth::user() -> id) -> get();
     }
 
     /**
