@@ -16,9 +16,18 @@ class MapController extends Controller
   	// The user decides if his map should be shared and with whom. So the first thing they do is tap the share button
   	// and send the link to somebody. After that the map is theoretically available for everyone to see, but only
   	// the one that has the link can actually access it.
-  	// So the share link is user dependant andnot location dependant.
+  	// So the share link is user dependant and not location dependant.
 
-  	$user = User::where('share_id', $id)->with('locations')->first();
-  	return view('map') -> with( ['user' => $user ] );
+
+    $user = User::has('locationSharing')->get();
+    dd($user);
+
+    $locations = [];
+    foreach( $user -> locations as $location )
+    {
+      $locations[] = ["lat" => intval($location->lat), "lng" => intval($location->lon)];
+    }
+
+  	return view('map') -> with( ['user' => $user, 'locations' => $locations ] );
   }
 }

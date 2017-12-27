@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('profile/{id}', 'MapController@show');
+Route::get('map/{id}', 'MapController@show');

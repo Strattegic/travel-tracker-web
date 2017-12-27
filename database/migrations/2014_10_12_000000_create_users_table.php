@@ -18,9 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-
-            // the id that identifies the user shared content
-            $table->string('share_id')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
