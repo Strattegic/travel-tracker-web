@@ -18,7 +18,7 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="column is-6 is-offset-3">
         <h1 class="title">
-          Traxplore - Coming Soon
+          traXplore - Coming Soon
         </h1>
         <!--<h2 class="subtitle"></h2>-->
         <div class="box">
