@@ -1,9 +1,9 @@
+// Font Awesome
+@import "~font-awesome/scss/font-awesome.scss";
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// Bulma.io
+@import "node_modules/bulma/bulma";
 
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+// the public sass file
+// everything that belongs to the public page is included in this file
+@import "public"

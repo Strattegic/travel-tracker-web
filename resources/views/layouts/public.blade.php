@@ -6,11 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
-        <!-- Fonts -->
-        <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> -->
-        <link href="/css/bulma-0.6.1/css/bulma.css" rel="stylesheet" type="text/css">
-
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <!-- Styles -->
         <style>
             html, body {
@@ -24,9 +21,12 @@
         </style>
     </head>
     <body>
-        <div id="map" style="height: 50%; width: 100%;"></div>
-        <div class="content">
-            @yield('content')
-        </div>
+        <!-- <div id="map" style="height: 50%; width: 100%;"></div> -->
+        <section class="hero is-info is-fullheight">
+            <div class="hero-body">
+                @yield('content')
+            </div>
+        </section>
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>

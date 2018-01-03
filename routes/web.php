@@ -13,9 +13,8 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ComingSoonController@show');
+Route::post('/', 'ComingSoonController@saveMailAddress');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
