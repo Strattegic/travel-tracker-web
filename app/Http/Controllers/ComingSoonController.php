@@ -14,7 +14,7 @@ class ComingSoonController extends Controller
     public function saveMailAddress(Request $request)
     {
       $validatedData = $request->validate([
-        'email' => 'required|email|unique',
+        'email' => 'required|email|unique:notify_mails,email',
       ]);
 
       $mail = new \App\NotifyMail();
