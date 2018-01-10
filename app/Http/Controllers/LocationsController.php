@@ -46,7 +46,7 @@ class LocationsController extends Controller
         $location -> lat = $request -> get('lat');
         $location -> lon = $request -> get('lon');
         $location -> user_id = 1;
-        $location -> added_on = new \DateTime();
+        $location -> added_on = $request -> get('added_on');
         $location -> save();
 
         return $location;

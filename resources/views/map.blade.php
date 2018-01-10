@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-
+  <div id="map" style="height: 50%; width: 100%;"></div>
 	<div class="section">
 		<div class="container">
 			<ul>
@@ -14,7 +14,7 @@
 
 <script>
   function initMap() {
-    var firstLocation = <? echo json_encode($locations[0]) ?>;
+    var firstLocation = @php echo json_encode($locations[0]) @endphp;
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 4,
       center: firstLocation
@@ -24,7 +24,7 @@
       map: map
     });
 
-    var coords = <? echo json_encode($locations) ?>;
+    var coords = @php echo json_encode($locations) @endphp;
     var path = new google.maps.Polyline({
       path: coords,
       geodesic: true,

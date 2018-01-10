@@ -21,12 +21,11 @@
         </style>
     </head>
     <body>
-        <!-- <div id="map" style="height: 50%; width: 100%;"></div> -->
         <section class="hero is-info is-fullheight">
             <div class="hero-body">
                 @yield('content')
             </div>
         </section>
-        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
