@@ -1,16 +1,19 @@
 @extends('layouts.public')
 
 @section('content')
-
-	<div class="section">
+  <div id="map" style="height: 300px; width: 100%;"></div>
+	<!-- <div class="section">
 		<div class="container">
 			<ul>
-			@foreach( $user -> locations as $location )
+			@foreach( $user -> journeys[0] -> locations as $location )
 				<li>Lat: {{ $location -> lat }}; Lon: {{ $location -> lon }}</li>
 			@endforeach
 			</ul>
 		</div>
-	</div>
+	</div> -->
+  <div id="locationResult">
+    
+  </div>
 
 <script>
   function initMap() {
@@ -24,6 +27,7 @@
       map: map
     });
 
+    // coords are all the locations the user recorded
     var coords = <? echo json_encode($locations) ?>;
     var path = new google.maps.Polyline({
       path: coords,
@@ -37,11 +41,11 @@
 
     var geocoder = new google.maps.Geocoder;
     var infowindow = new google.maps.InfoWindow;
-    geocodeLatLng(geocoder, map, infowindow);
+    geocodeLatLng(coords, geocoder, map, infowindow);
   }
 
-  function geocodeLatLng(geocoder, map, infowindow) {
-    var input = "49.286405,8.108089"
+  function geocodeLatLng(coords, geocoder, map, infowindow) {
+    var input = "51.5424634,9.932618"
     var latlngStr = input.split(',', 2);
     var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
     geocoder.geocode({'location': latlng}, function(results, status) {
@@ -55,6 +59,7 @@
           infowindow.setContent(results[0].formatted_address);
           infowindow.open(map, marker);
           console.log( results );
+          document.getElementById('locationResult').innerHTML = results;
         } else {
           window.alert('No results found');
         }
@@ -64,5 +69,5 @@
     });
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYviQKoiFsYTThtHlengir3Ldw5crj9fc&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9KCIbJYuzZK-EnBHlqUXaQVQx0k5fPUo&callback=initMap" type="text/javascript"></script>
 @endsection('content')

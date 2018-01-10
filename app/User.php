@@ -29,10 +29,10 @@ class User extends Authenticatable
     ];
 
     /**
-    * All locations that belong to the specified user (via user_id)
+    * All journeys that belong to the specified user (via user_id)
     **/
-    public function locations(){
-        return $this -> hasMany('App\Location');
+    public function journeys(){
+        return $this -> hasMany('App\Journey');
     }
 
     // LocationSharings

@@ -7,7 +7,7 @@ use App\User;
 
 class MapController extends Controller
 {
-  public function show( $id )
+  public function show( $userId, $id )
   {
   	// TODO: 
   	// - should the ID correspond to a specific map (which belongs to a user)?
@@ -18,17 +18,18 @@ class MapController extends Controller
   	// the one that has the link can actually access it.
   	// So the share link is user dependant and not location dependant.
 
+    // dd( hash("sha1", time()) );
 
     $user = User::whereHas('locationSharing', function($query) use ($id){
       $query -> where('share_id', $id);
     })
-    ->with('locations')
-    ->first();
+    ->with(['journeys.locations'])
+    ->find($userId);
 
     if( !empty( $user ) )
     {
       $locations = [];
-      foreach( $user -> locations as $location )
+      foreach( $user -> journeys[0] -> locations as $location )
       {
         $locations[] = ["lat" => intval($location->lat), "lng" => intval($location->lon)];
       }

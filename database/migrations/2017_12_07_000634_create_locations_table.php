@@ -15,8 +15,8 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('journey_id')->unsigned();
+            $table->foreign('journey_id')->references('id')->on('journeys');
             $table->double('lat', 9, 6);
             $table->double('lon', 9, 6);
             $table->timestamp('added_on');
