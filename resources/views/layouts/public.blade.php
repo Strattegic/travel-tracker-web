@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> -->
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <!-- Styles -->
         <style>
@@ -22,10 +22,8 @@
     </head>
     <body>
         <section class="hero is-info is-fullheight">
-            <div class="hero-body">
-                @yield('content')
-            </div>
+            @yield('content')
         </section>
-        <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
