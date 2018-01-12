@@ -19,6 +19,7 @@ class LocationSharingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             // the id that identifies the user shared content
+            // TODO: share_id should be a unique combined index (user_id / share_id) 
             $table->string('share_id')->unique();
             $table->timestamps();
 
