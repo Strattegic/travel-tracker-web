@@ -22,7 +22,7 @@
     <nav class="navbar is-transparent">
       <div class="navbar-brand">
         <a class="navbar-item" href="">
-          <strong>treXplore.me</strong>
+          <strong>traXplore.me</strong>
         </a>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
           <span></span>

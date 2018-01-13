@@ -26,9 +26,9 @@ class MapController extends Controller
     ->with(['journeys.locations'])
     ->find($userId);
 
+    $locations = [];
     if( !empty( $user ) )
     {
-      $locations = [];
       foreach( $user -> journeys[0] -> locations as $location )
       {
         $locations[] = ["lat" => intval($location->lat), "lng" => intval($location->lon)];

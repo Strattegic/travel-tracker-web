@@ -7,3 +7,7 @@ mix.scripts([
 
 // all the styles that are publicly used
 mix.sass('resources/assets/sass/app.scss', 'public/css');
+
+mix.options({
+	processCssUrls: false
+});
