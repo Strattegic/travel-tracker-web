@@ -17,9 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->resource('locations', 'LocationsController');
-
-Route::middleware('auth:api')->resource('location-sharings', 'LocationSharingsController')->only(['index', 'store', 'destroy']);
+Route::middleware(['auth:api'])->group(function () {
+	Route::resource('journeys', 'JourneysController');
+	Route::resource('journeys/{$journeyId}/locations', 'LocationsController');
+	Route::resource('location-sharings', 'LocationSharingsController')->only(['index', 'store', 'destroy']);
+});
 
 // // create tracking id
 // Route::middleware('auth:api')->post('tracking/toggle', 'TrackingController');

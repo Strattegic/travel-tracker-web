@@ -14,9 +14,9 @@ class LocationsController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index($journeyId)
   {
-    return Location::where('user_id', Auth::user() -> id) -> get();
+    return Location::where('journey_id', $journeyId) -> get();
   }
 
   /**
@@ -25,7 +25,7 @@ class LocationsController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(Request $request. $journeyId)
   {
     $validatedData = $request->validate([
       'lat' => ['required', new LocationRule],
@@ -35,8 +35,13 @@ class LocationsController extends Controller
     $location = new Location();
     $location -> lat = $request -> get('lat');
     $location -> lon = $request -> get('lon');
+
+    // each location remembers the next location in line
+    // this way it is easy to identify the route the user has taken
+    // even if he adds/removes different locations
+    $location -> journey_id = $journeyId;
     $location -> user_id = 1;
-    $location -> added_on = new \DateTime();
+    $location -> added_on = new \DateTime(); //TODO
     $location -> is_user_created = $request -> get('is_user_created');
     $location -> save();
 
